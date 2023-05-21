@@ -1,0 +1,55 @@
+# ###########################################
+# Model: ConvTasNet for speech enhancment
+# Dataset : Libri2mix
+# ###########################################
+work_dir: . #/home/user-name
+model:
+  name: ConvTasNet
+  model_path: trained_models/qat_8bit.pth
+  n_src: 1
+  n_splitter: 1
+  n_combiner: 1
+  quantization:
+    qat: True
+    gradient_based: False
+    weight_quant: True
+    weight_n_bits: 8
+    act_quant: True
+    act_n_bits: 8
+    in_quant: True
+    in_act_n_bits: 8
+    out_quant: True
+    out_act_n_bits: 8
+    n_splitter_bits: 8
+    n_combiner_bits: 8
+dataset:
+  name: librimix
+  task: enh_single
+  train_dir: /your-librimix-path/data/wav16k/min/train-360
+  valid_dir: /your-librimix-path/data/wav16k/min/dev
+  sample_rate: 16000
+  resample: 1
+  n_src: 1
+  noisy: True
+  segment: 3
+  augmentation:
+    enable: True
+    distribution: uniform
+    param0: -6
+    param1: 18
+training:
+  epochs: 80
+  batch_size: 6
+  num_workers: 4
+  half_lr: True
+  early_stop: True
+  pretrained:  pytorch_model.bin
+  wandb: False
+  seed: 0
+  optim:
+    optimizer: adam
+    lr: 0.001
+    weight_decay: 0.0
+testing:
+  test_dir: /your-librimix-path/Libri2Mix/wav16k/min/test
+  overlap: 0.25
