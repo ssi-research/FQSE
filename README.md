@@ -1,5 +1,8 @@
 # Fully Quantized Speech Enhancement (FQSE)
 
+## Paper (InterSpeech 2023)
+https://www.isca-archive.org/interspeech_2023/cohen23_interspeech.html
+
 ## Abstract
 Deep learning models have shown state-of-the-art results in speech enhancement. However, deploying such models on an eight-bit integer-only device is challenging. In this work, we analyze the gaps in deploying a vanilla quantization-aware training method for speech enhancement, revealing two significant observations. First, quantization mainly affects signals with a high input Signal-to-Noise Ratio (SNR). Second, quantizing the model's input and output shows major performance degradation. Based on our analysis, we propose Fully Quantized Speech Enhancement (FQSE), a new quantization-aware training method that closes these gaps and enables eight-bit integer-only quantization. FQSE introduces data augmentation to mitigate the quantization effect on high SNR. Additionally, we add an input splitter and a residual quantization block to the model to overcome the error of the input-output quantization. We show that FQSE closes the performance gaps induced by eight-bit quantization.
 
@@ -73,7 +76,14 @@ Run `export.py`:
 If you find this project useful in your research, please consider cite:
 
 ```BibTeX
-
+@inproceedings{cohen23_interspeech,
+  author={Elad Cohen and Hai Victor Habi and Arnon Netzer},
+  title={{Towards Fully Quantized Neural Networks For Speech Enhancement}},
+  year=2023,
+  booktitle={Proc. INTERSPEECH 2023},
+  pages={181--185},
+  doi={10.21437/Interspeech.2023-883}
+}
 ```
 ****
 
